@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   icons_launcher: ^2.1.7
   otp_pin_field: ^1.2.2
+  flutter_rating_bar: ^4.0.1
+  google_maps_flutter: ^2.6.1
 
 
 icons_launcher:
