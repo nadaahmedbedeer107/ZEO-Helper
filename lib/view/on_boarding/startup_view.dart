@@ -20,8 +20,8 @@ class _StartupViewState extends State<StartupView> {
   void goWelcomePage()  {
      Future.delayed(const Duration(seconds: 3),(){
       
-  welcomePage();
-    });
+     welcomePage();
+    },);
   
   }
 

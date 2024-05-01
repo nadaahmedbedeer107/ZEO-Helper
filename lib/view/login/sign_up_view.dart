@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:zeo/common/color_extention.dart';
 import 'package:zeo/common_widget/round_button.dart';
-import 'package:zeo/common_widget/round_icon_button.dart';
 import 'package:zeo/common_widget/round_textfield.dart';
-import 'package:zeo/view/login/reset_password_view.dart';
-import 'package:zeo/view/login/sign_up_view.dart';
-import 'package:zeo/view/on_boarding/on_boarding_view.dart';
+import 'package:zeo/view/login/login_view.dart';
+import 'package:zeo/view/login/otp_view.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class SignUpView extends StatefulWidget {
+  const SignUpView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignUpView> createState() => _SignUpViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignUpViewState extends State<SignUpView> {
+  TextEditingController txtName = TextEditingController();
+  TextEditingController txtMobile = TextEditingController();
+  TextEditingController txtAddress = TextEditingController();
   TextEditingController txtEmail = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
+  TextEditingController txtConfirmPassword = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,29 +36,56 @@ class _LoginViewState extends State<LoginView> {
                 height: 64,
               ),
               Text(
-                "Login",
+                "Sign Up",
                 style: TextStyle(
                     color: TColor.primaryText,
                     fontSize: 30,
                     fontWeight: FontWeight.w800),
               ),
               Text(
-                "Add your details to login",
+                "Add your details to sign up",
                 style: TextStyle(
                     color: TColor.secondaryText,
                     fontSize: 14,
                     fontWeight: FontWeight.w500),
               ),
+
               const SizedBox(
                 height: 25,
               ),
               RoundTextfield(
-                hintText: "Your Email",
+                hintText: "Name",
+                controller: txtName,
+              ),
+
+              const SizedBox(
+                height: 25,
+              ),
+              RoundTextfield(
+                hintText: "Email",
                 controller: txtEmail,
                 keyboardType: TextInputType.emailAddress,
               ),
+
               const SizedBox(
-                height: 20,
+                height: 25,
+              ),
+              RoundTextfield(
+                hintText: "Mobile No",
+                controller: txtMobile,
+                keyboardType: TextInputType.phone,
+              ),
+
+              const SizedBox(
+                height: 25,
+              ),
+              RoundTextfield(
+                hintText: "Address",
+                controller: txtAddress,
+              ),
+
+              const SizedBox(
+                height: 25,
               ),
               RoundTextfield(
                 hintText: "Password",
@@ -63,76 +93,39 @@ class _LoginViewState extends State<LoginView> {
                 obscureText: true,
                 //keyboardType: TextInputType.emailAddress,
               ),
+
               const SizedBox(
                 height: 25,
               ),
-              RoundButton(title: "Login", onPressed: () {
+              RoundTextfield(
+                hintText: "Confirm Password",
+                controller: txtConfirmPassword,
+                obscureText: true,
+                //keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              RoundButton( title:"Sign Up", onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const OnBoardingView(),
+                      builder: (context) => const OTPView(),
                     ),
                   );
               }),
+              
+              
+              
               const SizedBox(
-                height: 4,
+                height: 30,
               ),
               TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ResetPasswordView(),
-                    ),
-                  );
-
-                  
-                },
-                child: Text(
-                  "Forgot your password ? ",
-                  style: TextStyle(
-                      color: TColor.secondaryText,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Text(
-                "or Login With",
-                style: TextStyle(
-                    color: TColor.secondaryText,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              RoundIconButton(
-                icon: "assets/img/facebook_logo.png",
-                title: "Login with Facebook",
-                color: const Color(0xff294DA5),
-                onPressed: () {},
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              RoundIconButton(
-                icon: "assets/img/google_logo.png",
-                title: "Login with Google",
-                color: const Color(0xffDC4335),
-                onPressed: () {},
-              ),
-              const SizedBox(
-                height: 80,
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignUpView(),
+                      builder: (context) => const LoginView(),
                     ),
                   );
                 },
@@ -140,14 +133,15 @@ class _LoginViewState extends State<LoginView> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "Don't have an Account ? ",
+                      "Already have an Account? ",
                       style: TextStyle(
                           color: TColor.secondaryText,
                           fontSize: 14,
                           fontWeight: FontWeight.w500),
                     ),
+
                     Text(
-                      "Sign Up",
+                      "Login",
                       style: TextStyle(
                           color: TColor.primary,
                           fontSize: 14,
